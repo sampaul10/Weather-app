@@ -81,10 +81,10 @@ function renderCurrentWeather(city, weather) {
   humidityEl.setAttribute('class', 'card-text');
 
   heading.textContent = `${city} (${date})`;
-  weatherIcon.setAttribute('src', iconUrl);
-  weatherIcon.setAttribute('alt', iconDescription);
-  weatherIcon.setAttribute('class', 'weather-img');
-  heading.append(weatherIcon);
+  // weatherIcon.setAttribute('src', iconUrl);
+  // weatherIcon.setAttribute('alt', iconDescription);
+  // weatherIcon.setAttribute('class', 'weather-img');
+  // heading.append(weatherIcon);
   tempEl.textContent = `Temp: ${tempF}°F`;
   windEl.textContent = `Wind: ${windMph} MPH`;
   humidityEl.textContent = `Humidity: ${humidity} %`;
@@ -98,7 +98,7 @@ function renderCurrentWeather(city, weather) {
 // daily forecast.
 function renderForecastCard(forecast) {
   // variables for data from api
-  var iconUrl = `https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
+  // var iconUrl = `https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
   var iconDescription = forecast.weather[0].description;
   var tempF = forecast.main.temp;
   var humidity = forecast.main.humidity;
@@ -109,14 +109,13 @@ function renderForecastCard(forecast) {
   var card = document.createElement('div');
   var cardBody = document.createElement('div');
   var cardTitle = document.createElement('h5');
-  var weatherIcon = document.createElement('img');
   var tempEl = document.createElement('p');
   var windEl = document.createElement('p');
   var humidityEl = document.createElement('p');
 
   col.append(card);
   card.append(cardBody);
-  cardBody.append(cardTitle, weatherIcon, tempEl, windEl, humidityEl);
+  cardBody.append(cardTitle, tempEl, windEl, humidityEl);
 
   col.setAttribute('class', 'col-md');
   col.classList.add('five-day-card');
@@ -129,8 +128,6 @@ function renderForecastCard(forecast) {
 
   // Add content to elements
   cardTitle.textContent = dayjs(forecast.dt_txt).format('M/D/YYYY');
-  weatherIcon.setAttribute('src', iconUrl);
-  weatherIcon.setAttribute('alt', iconDescription);
   tempEl.textContent = `Temp: ${tempF} °F`;
   windEl.textContent = `Wind: ${windMph} MPH`;
   humidityEl.textContent = `Humidity: ${humidity} %`;
